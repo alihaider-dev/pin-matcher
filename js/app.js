@@ -1,8 +1,15 @@
-function generatePin() {
-  // console.log("clicked");
+function getPin() {
   const randomPin = Math.round(Math.random() * 10000);
-  console.log(randomPin);
+  const pinString = randomPin + '';
+  if (pinString.length == 4) {
+    return randomPin;
+  }
+  else {
+    return getPin();
+  }
+}
 
-  const pinInput = document.getElementById('pin-input');
-  pinInput.value = randomPin;
+function generatePin() {
+  const pin = getPin();
+  document.getElementById('pin-input').value = pin;
 }
